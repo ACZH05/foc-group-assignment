@@ -17,6 +17,7 @@ public:
 };
 
 void createTable(courseInfo courseList[]);
+int calcFee(courseInfo courseList[], int courseCode, int noOfRegister);
 
 int main()
 {
@@ -37,6 +38,8 @@ int main()
     cout << "How many are joining: ";
     cin >> noOfRegister;
 
+    cout << calcFee(courseList, courseCodeInput, noOfRegister);
+
     return 0;
 }
 
@@ -51,4 +54,9 @@ void createTable(courseInfo courseList[])
         cout << "| " << setw(40) << left << courseList[i].courseName << "| " << setw(20) << left << courseList[i].courseCode << "| RM" << setw(20) << left << courseList[i].courseFee
              << "|\n";
     }
+}
+
+int calcFee(courseInfo courseList[], int courseCode, int noOfRegister)
+{
+    return courseList[courseCode - 1].courseFee * noOfRegister;
 }

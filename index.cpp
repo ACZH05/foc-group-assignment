@@ -18,18 +18,20 @@ public:
 
 void createTable(courseInfo courseList[]);
 int calcFee(courseInfo courseList[], int courseCode, int noOfRegister);
+int getDisc(int totalBeforeDisc, int noOfRegister);
 
 int main()
 {
-    courseInfo autoCAD("1-AutoCAD Basic", 1, 1470);                    // create an object for autoCAD Basic
-    courseInfo msExcelBasic("2-Microsoft Excel Basic", 2, 525);        // create an object for Microsoft Excel Basic
-    courseInfo msProject("3-Microsoft Project", 3, 1570);              // create an object for Microsoft Project
-    courseInfo eInvoice("4-E-Invoice Strategic Implementing", 4, 850); // create an object for Invoice Strategic Implementing
-    courseInfo analyzingData("5-Analyzing Data", 5, 1890);             // create an object for Analyzing Data
+    courseInfo autoCAD("AutoCAD Basic", 1, 1470);                    // create an object for autoCAD Basic
+    courseInfo msExcelBasic("Microsoft Excel Basic", 2, 525);        // create an object for Microsoft Excel Basic
+    courseInfo msProject("Microsoft Project", 3, 1570);              // create an object for Microsoft Project
+    courseInfo eInvoice("E-Invoice Strategic Implementing", 4, 850); // create an object for Invoice Strategic Implementing
+    courseInfo analyzingData("Analyzing Data", 5, 1890);             // create an object for Analyzing Data
 
     courseInfo courseList[5] = {autoCAD, msExcelBasic, msProject, eInvoice, analyzingData};
 
     int courseCodeInput, noOfRegister;
+    double totalBeforeDisc, totalAfterDisc;
 
     createTable(courseList);
 
@@ -38,7 +40,8 @@ int main()
     cout << "How many are joining: ";
     cin >> noOfRegister;
 
-    cout << calcFee(courseList, courseCodeInput, noOfRegister);
+    totalBeforeDisc = calcFee(courseList, courseCodeInput, noOfRegister);
+    totalAfterDisc = getDisc(totalBeforeDisc, noOfRegister);
 
     return 0;
 }
@@ -59,4 +62,12 @@ void createTable(courseInfo courseList[])
 int calcFee(courseInfo courseList[], int courseCode, int noOfRegister)
 {
     return courseList[courseCode - 1].courseFee * noOfRegister;
+}
+
+int getDisc(int totalBeforeDisc, int noOfRegister)
+{
+    if (noOfRegister > 50)
+        return totalBeforeDisc * 0.9;
+    else
+        return totalBeforeDisc;
 }

@@ -40,8 +40,21 @@ int main()
     cout << "How many are joining: ";
     cin >> noOfRegister;
 
+    if (courseCodeInput < 1 || courseCodeInput > 5)
+    {
+        cout << "The course code you type doesn't exist, please try again!";
+        return 0;
+    }
+    if (noOfRegister < 30)
+    {
+        cout << "There's not enough of people register, please try again!";
+        return 0;
+    }
+
     totalBeforeDisc = calcFee(courseList, courseCodeInput, noOfRegister);
     totalAfterDisc = getDisc(totalBeforeDisc, noOfRegister);
+
+    cout << totalAfterDisc;
 
     return 0;
 }

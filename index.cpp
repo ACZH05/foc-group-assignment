@@ -19,6 +19,7 @@ public:
 void createTable(courseInfo courseList[]);
 int calcFee(courseInfo courseList[], int courseCode, int noOfRegister);
 int getDisc(int totalBeforeDisc, int noOfRegister);
+void createRecipt(courseInfo courseList[], int courseCode, int noOfRegister, double totalBeforeDisc, double totalAfterDisc, double feePerPerson);
 
 int main()
 {
@@ -31,7 +32,7 @@ int main()
     courseInfo courseList[5] = {autoCAD, msExcelBasic, msProject, eInvoice, analyzingData};
 
     int courseCodeInput, noOfRegister;
-    double totalBeforeDisc, totalAfterDisc;
+    double totalBeforeDisc, totalAfterDisc, feePerPerson;
 
     createTable(courseList);
 
@@ -53,8 +54,9 @@ int main()
 
     totalBeforeDisc = calcFee(courseList, courseCodeInput, noOfRegister);
     totalAfterDisc = getDisc(totalBeforeDisc, noOfRegister);
+    feePerPerson = totalAfterDisc / noOfRegister;
 
-    cout << totalAfterDisc;
+    createRecipt(courseList, courseCodeInput, noOfRegister, totalBeforeDisc, totalAfterDisc, feePerPerson);
 
     return 0;
 }
@@ -83,4 +85,26 @@ int getDisc(int totalBeforeDisc, int noOfRegister)
         return totalBeforeDisc * 0.9;
     else
         return totalBeforeDisc;
+}
+
+void createRecipt(courseInfo courseList[], int courseCode, int noOfRegister, double totalBeforeDisc, double totalAfterDisc, double feePerPerson)
+{
+    cout << setw(39) << right << "IT UTM Consultancy" << setw(21) << endl;
+    cout << setw(60) << setfill('*') << "" << setfill(' ') << endl;
+    cout << setw(35) << left << "Course Code"
+         << ": " << courseCode << endl;
+    cout << setw(35) << "Course"
+         << ": " << courseList[courseCode - 1].courseName << endl;
+    cout << setw(35) << "Fees per person"
+         << ": RM" << fixed << setprecision(2) << courseList[courseCode - 1].courseFee << endl;
+    cout << setw(35) << "Number of persons enrolled"
+         << ": " << noOfRegister << endl;
+    cout << setw(35) << "Total fees"
+         << ": RM" << fixed << setprecision(2) << totalBeforeDisc << endl;
+    cout << setw(35) << "Discount"
+         << ": RM" << fixed << setprecision(2) << totalBeforeDisc - totalAfterDisc << endl;
+    cout << setw(35) << "Total fee after discount"
+         << ": RM" << fixed << setprecision(2) << totalAfterDisc << endl;
+    cout << setw(35) << "New fee per person"
+         << ": RM" << fixed << setprecision(2) << feePerPerson << endl;
 }

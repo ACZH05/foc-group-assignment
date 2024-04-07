@@ -28,7 +28,15 @@ int main()
 
     courseInfo courseList[5] = {autoCAD, msExcelBasic, msProject, eInvoice, analyzingData};
 
+    int courseCodeInput, noOfRegister;
+
     createTable(courseList);
+
+    cout << "Which course would you like to join (give course code only): ";
+    cin >> courseCodeInput;
+    cout << "How many are joining: ";
+    cin >> noOfRegister;
+
     return 0;
 }
 

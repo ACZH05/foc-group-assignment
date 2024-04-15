@@ -76,7 +76,9 @@ void createTable(courseInfo courseList[])
 
 int calcFee(courseInfo courseList[], int courseCode, int noOfRegister)
 {
-    return courseList[courseCode - 1].courseFee * noOfRegister;
+    int totalFee;
+    totalFee = courseList[courseCode - 1].courseFee * noOfRegister;
+    return totalFee;
 }
 
 int getDisc(int totalBeforeDisc, int noOfRegister)

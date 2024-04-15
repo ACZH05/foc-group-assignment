@@ -89,7 +89,8 @@ int getDisc(int totalBeforeDisc, int noOfRegister)
 
 void createRecipt(courseInfo courseList[], int courseCode, int noOfRegister, double totalBeforeDisc, double totalAfterDisc, double feePerPerson)
 {
-    cout << setw(39) << right << "IT UTM Consultancy" << setw(21) << endl;
+    cout << setw(39) << right << "IT UTM Consultancy" << setw(21) << endl
+         << endl;
     cout << setw(60) << setfill('*') << "" << setfill(' ') << endl;
     cout << setw(35) << left << "Course Code"
          << ": " << courseCode << endl;
@@ -106,5 +107,7 @@ void createRecipt(courseInfo courseList[], int courseCode, int noOfRegister, dou
     cout << setw(35) << "Total fee after discount"
          << ": RM" << fixed << setprecision(2) << totalAfterDisc << endl;
     cout << setw(35) << "New fee per person"
-         << ": RM" << fixed << setprecision(2) << feePerPerson << endl;
+         << ": RM" << fixed << setprecision(2) << feePerPerson << endl
+         << endl;
+    cout << "Hope you are satisfied with us. See you in the next course!";
 }
